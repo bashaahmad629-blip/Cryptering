@@ -17,7 +17,6 @@
 
     const ALFABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    // CAESAR CIPHER
     function kjorCaesar(retning) {
         feilmelding = "";
         resultat = "";
@@ -58,7 +57,7 @@
         resultat = midlertidigResultat;
     }
 
-    // VIGENERE
+
     function kjorvigenere(retning) {
         feilmelding2 = "";
         resultat2 = "";
@@ -109,7 +108,7 @@
         resultat2 = midlertidigResultat;
     }
 
-    // ONE-TIME PAD: GENERER TILFELDIG NØKKEL
+
     function lagNokkel(lengde) {
         let nyNokkel = "";
 
@@ -121,7 +120,6 @@
         return nyNokkel;
     }
 
-    // ONE-TIME PAD: KRYPTERING OG DEKRYPTERING
     function kjorOnepad(retning) {
         feilmelding3 = "";
         resultat3 = "";
@@ -129,7 +127,6 @@
         if (!tekst3.trim())
             return feilmelding3 = "Tekstfeltet kan ikke være tomt.";
 
-        // Kontroller tekst: kun A-Z, a-z og mellomrom.
         for (const b of tekst3) {
             if (b !== " " && ALFABET.indexOf(b.toUpperCase()) === -1) {
                 return feilmelding3 =
@@ -141,11 +138,11 @@
         let aktivNokkel;
 
         if (retning === 1) {
-            // Generer en ny tilfeldig nøkkel ved kryptering.
+
             aktivNokkel = lagNokkel(antallBokstaver);
             nokkel3 = aktivNokkel;
         } else {
-            // Ved dekryptering brukes nøkkelen brukeren skriver inn.
+
             aktivNokkel = nokkel3.toUpperCase();
 
             if (!/^[A-Z]+$/.test(aktivNokkel)) {
@@ -165,7 +162,7 @@
         for (let i = 0; i < tekst3.length; i++) {
             const b = tekst3[i];
 
-            // Mellomrom beholdes og bruker ikke nøkkelbokstaver.
+
             if (b === " ") {
                 midlertidigResultat += " ";
                 continue;
@@ -180,7 +177,7 @@
 
             if (nyPos < 0) nyPos += 26;
 
-            // Behold store og små bokstaver.
+
             midlertidigResultat +=
                 b === u
                     ? ALFABET[nyPos]
